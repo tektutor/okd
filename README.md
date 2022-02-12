@@ -1416,3 +1416,25 @@ Error: Problems in request:
 missing groups or modules: javapackages-tools
 [root@tektutor ~]# 
 </pre>
+
+##### Enabled pki dependencies
+```
+sudo yum module -y enable pki-deps
+```
+The expected output is
+<pre>
+[root@tektutor ~]# yum module -y enable pki-deps
+Updating Subscription Management repositories.
+Last metadata expiration check: 0:02:08 ago on Fri 11 Feb 2022 07:46:37 PM PST.
+Dependencies resolved.
+=========================================================================================================================
+ Package                     Architecture               Version                        Repository                   Size
+=========================================================================================================================
+Enabling module streams:
+ pki-deps                                               10.6                                                            
+
+Transaction Summary
+=========================================================================================================================
+
+Complete!
+</pre>
