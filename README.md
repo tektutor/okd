@@ -15,11 +15,14 @@ subscription-manager list --available --all
 When prompted for username and password, type your redhat developer credentials to register your OS with RedHat to let you install/upgrade softwares.
 
 ### Installing ovirt hypervisor in RHEL 8.5
-```
-dnf -y update
-sudo yum -y install https://resources.ovirt.org/pub/yum-repo/ovirt-release44.rpm
+Make sure VT-x or AMD-v is enabled on the BIOS if RHEL 8.5 is setup as the base Operating System.
+
+In case you have setup RHEL 8.5 as a Virtual Machine, make sure nested VM is enabled.  I enabled VT-X and IOMMU on my VMWare Workstation.
 
 ```
+dnf -y update
+```
+
 The expected output is
 <pre>
 [root@tektutor ~]# dnf -y update
@@ -1339,4 +1342,13 @@ Installed:
 
 Complete!
 [root@tektutor ~]# 
+</pre>
+
+Now since all the updates are done, let's proceed with ovirt installation
+
+```
+sudo yum -y install https://resources.ovirt.org/pub/yum-repo/ovirt-release44.rpm
+```
+The expected output is
+<pre>
 </pre>
