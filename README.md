@@ -82,6 +82,41 @@ Complete!
 [root@tektutor ~]# 
 </pre>
 
+Starting DNS Service
+```
+sudo systemctl start named
+sudo systemctl enable named
+sudo systemctl status named
+```
+
+The expected output is
+<pre>
+Starting DNS Service
+```
+[root@tektutor ~]# <b>systemctl start named</b>
+[root@tektutor ~]# <b>systemctl enable named</b>
+Created symlink /etc/systemd/system/multi-user.target.wants/named.service → /usr/lib/systemd/system/named.service.
+[root@tektutor ~]# <b>systemctl status named</b>
+● named.service - Berkeley Internet Name Domain (DNS)
+   Loaded: loaded (/usr/lib/systemd/system/named.service; enabled; vendor preset: disabled)
+   Active: active (running) since Sat 2022-02-12 14:56:34 PST; 21s ago
+ Main PID: 38264 (named)
+    Tasks: 27 (limit: 410178)
+   Memory: 81.0M
+   CGroup: /system.slice/named.service
+           └─38264 /usr/sbin/named -u named -c /etc/named.conf
+
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './DNSKEY/IN': 2001:503:ba3e::2:30#53
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './NS/IN': 2001:503:ba3e::2:30#53
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './DNSKEY/IN': 2001:500:a8::e#53
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './NS/IN': 2001:500:a8::e#53
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './DNSKEY/IN': 2001:500:2f::f#53
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './NS/IN': 2001:500:2f::f#53
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './DNSKEY/IN': 2001:500:2::c#53
+Feb 12 14:56:34 tektutor named[38264]: network unreachable resolving './NS/IN': 2001:500:2::c#53
+Feb 12 14:56:34 tektutor named[38264]: managed-keys-zone: Key 20326 for zone . acceptance timer complete: key now trusted
+Feb 12 14:56:34 tektutor named[38264]: resolver priming query complete
+</pre>
 
 ### Installing ovirt hypervisor in RHEL 7.7
 Make sure VT-x or AMD-v is enabled on the BIOS if RHEL 8.5 is setup as the base Operating System.
