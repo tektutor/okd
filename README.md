@@ -2,6 +2,9 @@
 
 As a first step, I installed RHEL 8.5. If you are using it for self-learning purpose, you may request for a Developer license which let's you download RHEL 8.5 and use it free for non-commercial purpose.
 
+#### System Configuration
+I used my Dell 
+
 ##### Enabling Software Repositories on a fresh RHEL 8.x OS
 For more detailed instructions, you may read this article
 https://access.redhat.com/solutions/253273
@@ -1384,5 +1387,32 @@ Installed:
   ovirt-release44-4.4.10.1-1.el8.noarch                                                                                  
 
 Complete!
+[root@tektutor ~]# 
+</pre>
+
+#### Install Java packages
+```
+sudo yum module -y enable javapackages-tools
+```
+The expected output is
+<pre>
+[root@tektutor ~]# yum module -y enable javapackages-tools
+Updating Subscription Management repositories.
+CentOS-$stream - Ceph Pacific                                                            461 kB/s | 375 kB     00:00    
+determining the fastest mirror (12 hosts).. done.             ===                      ] ---  B/s |   0  B     --:-- ETA
+Latest oVirt 4.4 Release                                                                 216 kB/s | 2.7 MB     00:12    
+Extra Packages for Enterprise Linux 8 - x86_64                                           7.4 MB/s |  11 MB     00:01    
+CentOS-8 - Gluster 8                                                                      53 kB/s |  42 kB     00:00    
+virtio-win builds roughly matching what will be shipped in upcoming RHEL                  43 kB/s | 143 kB     00:03    
+Copr repo for EL8_collection owned by sbonazzo                                            47 kB/s | 246 kB     00:05    
+Copr repo for gluster-ansible owned by sac                                               2.4 kB/s | 7.3 kB     00:02    
+CentOS-8 - Advanced Virtualization                                                       255 kB/s | 207 kB     00:00    
+CentOS-8 - oVirt 4.4                                                                      18 kB/s | 1.2 MB     01:05    
+CentOS-8 - OpsTools - collectd                                                            47 kB/s |  41 kB     00:00    
+CentOS-8 - OpsTools - collectd - vault                                                    34 kB/s | 149 kB     00:04    
+CentOS-8 - NFV OpenvSwitch                                                               143 kB/s | 107 kB     00:00    
+CentOS-8 - OpenStack victoria                                                            3.1 MB/s | 2.7 MB     00:00    
+Error: Problems in request:
+missing groups or modules: javapackages-tools
 [root@tektutor ~]# 
 </pre>
