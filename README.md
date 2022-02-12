@@ -1,9 +1,12 @@
 ### Installing OpenShift Community Edition (OKD) of OpenShift
+I initially was trying to install Ovirt on RHEL 8.5 but unfornately OVirt 4.4 installation was failing due to some dependencies.  Hence, I had no other option other than moving to CentOS 7.7.
 
-As a first step, I installed RHEL 8.5. If you are using it for self-learning purpose, you may request for a Developer license which let's you download RHEL 8.5 and use it free for non-commercial purpose.
+As a first step, I installed CentOS 7.7 64-bit as it is guaranteed to receive updates till year 2024. while CentOS 8.x has already reached it End of Life by Dec 2021 and updates stopped on 31st Jan 2022. 
 
 #### System Configuration
-I used my Dell 
+I used my Dell Precision 7920 Tower with 128GB RAM, with Dual Socket with Intel Xeon Silver Processor with 12Cores on each Processor. It has a 1 TB SSD Hard drive.
+
+For the CentOS 7.7, I allocated 64 GB RAM, 24 Cores with 500 GB HDD. Nested Virtualization i.e VT-X and IOMMU are enabled on VMWare Workstation.
 
 ##### Enabling Software Repositories on a fresh RHEL 8.x OS
 For more detailed instructions, you may read this article
@@ -17,7 +20,70 @@ subscription-manager list --available --all
 ```
 When prompted for username and password, type your redhat developer credentials to register your OS with RedHat to let you install/upgrade softwares.
 
-### Installing ovirt hypervisor in RHEL 8.5
+### Installing DNS Server in RHEL 8.5
+```
+sudo dnf install bind bind-utils
+```
+The expected output is
+<pre>
+[root@tektutor ~]# dnf install bind bind-utils
+Updating Subscription Management repositories.
+Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)                                                     15 MB/s |  38 MB     00:02    
+Red Hat Enterprise Linux 8 for x86_64 - BaseOS (RPMs)                                                        16 MB/s |  43 MB     00:02    
+Last metadata expiration check: 0:00:01 ago on Sat 12 Feb 2022 02:54:12 PM PST.
+Package bind-utils-32:9.11.26-6.el8.x86_64 is already installed.
+Dependencies resolved.
+============================================================================================================================================
+ Package               Architecture            Version                              Repository                                         Size
+============================================================================================================================================
+Installing:
+ bind                  x86_64                  32:9.11.26-6.el8                     rhel-8-for-x86_64-appstream-rpms                  2.1 M
+
+Transaction Summary
+============================================================================================================================================
+Install  1 Package
+
+Total download size: 2.1 M
+Installed size: 4.5 M
+Is this ok [y/N]: y
+Downloading Packages:
+bind-9.11.26-6.el8.x86_64.rpm                                                                               3.6 MB/s | 2.1 MB     00:00    
+--------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                       3.6 MB/s | 2.1 MB     00:00     
+Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)                                                    4.9 MB/s | 5.0 kB     00:00    
+Importing GPG key 0xFD431D51:
+ Userid     : "Red Hat, Inc. (release key 2) <security@redhat.com>"
+ Fingerprint: 567E 347A D004 4ADE 55BA 8A5F 199E 2F91 FD43 1D51
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+Is this ok [y/N]: y
+Key imported successfully
+Importing GPG key 0xD4082792:
+ Userid     : "Red Hat, Inc. (auxiliary key) <security@redhat.com>"
+ Fingerprint: 6A6A A7C9 7C88 90AE C6AE BFE2 F76F 66C3 D408 2792
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+Is this ok [y/N]: y
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                    1/1 
+  Running scriptlet: bind-32:9.11.26-6.el8.x86_64                                                                                       1/1 
+  Installing       : bind-32:9.11.26-6.el8.x86_64                                                                                       1/1 
+  Running scriptlet: bind-32:9.11.26-6.el8.x86_64                                                                                       1/1 
+  Verifying        : bind-32:9.11.26-6.el8.x86_64                                                                                       1/1 
+Installed products updated.
+
+Installed:
+  bind-32:9.11.26-6.el8.x86_64                                                                                                              
+
+Complete!
+[root@tektutor ~]# 
+</pre>
+
+
+### Installing ovirt hypervisor in RHEL 7.7
 Make sure VT-x or AMD-v is enabled on the BIOS if RHEL 8.5 is setup as the base Operating System.
 
 In case you have setup RHEL 8.5 as a Virtual Machine, make sure nested VM is enabled.  I enabled VT-X and IOMMU on my VMWare Workstation.
