@@ -2001,3 +2001,50 @@ Installed:
   swtpm-tools-0.6.0-2.20210607gitea627b3.el8s.x86_64         
 
 Complete!
+</pre>
+
+#### Installing ovirt engine
+```
+sudo yum -y install vim tmux ovirt-engine
+```
+The expected output is
+<pre>
+[root@tektutor ~]# yum -y install vim tmux ovirt-engine --skip-broken
+Updating Subscription Management repositories.
+Last metadata expiration check: 0:21:09 ago on Fri 11 Feb 2022 07:46:37 PM PST.
+Package vim-enhanced-2:8.0.1763-16.el8_5.4.x86_64 is already installed.
+Dependencies resolved.
+=========================================================================================================================
+ Package             Architecture          Version                    Repository                                    Size
+=========================================================================================================================
+Installing:
+ tmux                x86_64                2.7-1.el8                  rhel-8-for-x86_64-baseos-rpms                317 k
+
+Transaction Summary
+=========================================================================================================================
+Install  1 Package
+
+Total download size: 317 k
+Installed size: 770 k
+Downloading Packages:
+tmux-2.7-1.el8.x86_64.rpm                                                                520 kB/s | 317 kB     00:00    
+-------------------------------------------------------------------------------------------------------------------------
+Total                                                                                    518 kB/s | 317 kB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                 1/1 
+  Installing       : tmux-2.7-1.el8.x86_64                                                                           1/1 
+  Running scriptlet: tmux-2.7-1.el8.x86_64                                                                           1/1 
+  Verifying        : tmux-2.7-1.el8.x86_64                                                                           1/1 
+Installed products updated.
+
+Installed:
+  tmux-2.7-1.el8.x86_64                                                                                                  
+Skipped:
+  ovirt-engine-4.4.10.6-1.el8.noarch                                                                                     
+
+Complete!
+</pre>
