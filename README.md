@@ -1351,4 +1351,38 @@ sudo yum -y install https://resources.ovirt.org/pub/yum-repo/ovirt-release44.rpm
 ```
 The expected output is
 <pre>
+[root@tektutor ~]# yum -y install https://resources.ovirt.org/pub/yum-repo/ovirt-release44.rpm
+Updating Subscription Management repositories.
+Last metadata expiration check: 0:10:42 ago on Fri 11 Feb 2022 07:31:38 PM PST.
+ovirt-release44.rpm                                                                       10 kB/s |  21 kB     00:02    
+Dependencies resolved.
+=========================================================================================================================
+ Package                        Architecture          Version                          Repository                   Size
+=========================================================================================================================
+Installing:
+ ovirt-release44                noarch                4.4.10.1-1.el8                   @commandline                 21 k
+
+Transaction Summary
+=========================================================================================================================
+Install  1 Package
+
+Total size: 21 k
+Installed size: 31 k
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                 1/1 
+  Installing       : ovirt-release44-4.4.10.1-1.el8.noarch                                                           1/1 
+  Running scriptlet: ovirt-release44-4.4.10.1-1.el8.noarch                                                           1/1 
+  Verifying        : ovirt-release44-4.4.10.1-1.el8.noarch                                                           1/1 
+Installed products updated.
+
+Installed:
+  ovirt-release44-4.4.10.1-1.el8.noarch                                                                                  
+
+Complete!
+[root@tektutor ~]# 
 </pre>
