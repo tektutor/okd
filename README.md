@@ -1438,3 +1438,566 @@ Transaction Summary
 
 Complete!
 </pre>
+
+#### Install postgresql v12
+```
+sudo yum module -y enable postgresql:12
+```
+The expected output is
+<pre>
+[root@tektutor ~]# yum module -y enable postgresql:12
+Updating Subscription Management repositories.
+Last metadata expiration check: 0:14:29 ago on Fri 11 Feb 2022 07:46:37 PM PST.
+Dependencies resolved.
+=========================================================================================================================
+ Package                     Architecture               Version                        Repository                   Size
+=========================================================================================================================
+Enabling module streams:
+ postgresql                                             12                                                              
+
+Transaction Summary
+=========================================================================================================================
+
+Complete!
+</pre>
+
+### Let's update the software packages in RHEL 8.5
+```
+sudo yum update
+```
+The expected output is
+<pre>
+root@tektutor ~]# yum -y update
+Updating Subscription Management repositories.
+Last metadata expiration check: 0:15:05 ago on Fri 11 Feb 2022 07:46:37 PM PST.
+Dependencies resolved.
+=========================================================================================================================
+ Package                                    Arch   Version             Repository                                   Size
+=========================================================================================================================
+Installing:
+ libgfapi0                                  x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                   125 k
+     replacing  glusterfs-api.x86_64 6.0-56.4.el8
+ libglusterfs0                              x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                   350 k
+     replacing  glusterfs-libs.x86_64 6.0-56.4.el8
+Upgrading:
+ glusterfs                                  x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                   689 k
+ glusterfs-cli                              x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                   214 k
+ glusterfs-client-xlators                   x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                   899 k
+ glusterfs-fuse                             x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                   171 k
+ jansson                                    x86_64 2.12-5.el8          ovirt-4.4-centos-opstools-vault              45 k
+ librados2                                  x86_64 2:16.2.7-1.el8s     ovirt-4.4-centos-ceph-pacific               3.8 M
+ librbd1                                    x86_64 2:16.2.7-1.el8s     ovirt-4.4-centos-ceph-pacific               4.2 M
+ libvirt-daemon                             x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    420 k
+ libvirt-daemon-config-network              x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     76 k
+ libvirt-daemon-driver-interface            x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    215 k
+ libvirt-daemon-driver-network              x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    245 k
+ libvirt-daemon-driver-nodedev              x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    225 k
+ libvirt-daemon-driver-nwfilter             x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    241 k
+ libvirt-daemon-driver-qemu                 x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    920 k
+ libvirt-daemon-driver-secret               x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    205 k
+ libvirt-daemon-driver-storage              x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     74 k
+ libvirt-daemon-driver-storage-core         x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    261 k
+ libvirt-daemon-driver-storage-disk         x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     85 k
+ libvirt-daemon-driver-storage-gluster      x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     87 k
+ libvirt-daemon-driver-storage-iscsi        x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     82 k
+ libvirt-daemon-driver-storage-iscsi-direct x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     84 k
+ libvirt-daemon-driver-storage-logical      x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     86 k
+ libvirt-daemon-driver-storage-mpath        x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     80 k
+ libvirt-daemon-driver-storage-rbd          x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     90 k
+ libvirt-daemon-driver-storage-scsi         x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     82 k
+ libvirt-daemon-kvm                         x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization     74 k
+ libvirt-libs                               x86_64 7.6.0-6.el8s        ovirt-4.4-centos-advanced-virtualization    4.5 M
+ libzstd                                    x86_64 1.4.5-6.el8         ovirt-4.4-centos-openstack-victoria         335 k
+ python3-cairo                              x86_64 1.18.1-2.el8        ovirt-4.4-copr:copr.fedorainfracloud.org:sbonazzo:EL8_collection
+                                                                                                                    93 k
+ python3-pexpect                            noarch 4.7.0-4.el8         ovirt-4.4-centos-ovirt44                    144 k
+ python3-psutil                             x86_64 5.7.2-1.el8         ovirt-4.4-centos-openstack-victoria         419 k
+ python3-pyparsing                          noarch 2.4.6-1.el8         ovirt-4.4-centos-openstack-victoria         161 k
+ python3-pyyaml                             x86_64 5.1.2-3.el8         ovirt-4.4-copr:copr.fedorainfracloud.org:sbonazzo:EL8_collection
+                                                                                                                   197 k
+ python3-requests                           noarch 2.22.0-7.el8        ovirt-4.4-centos-openstack-victoria         123 k
+ python3-six                                noarch 1.15.0-2.el8        ovirt-4.4-centos-openstack-victoria          39 k
+ qemu-guest-agent                           x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization    195 k
+ qemu-img                                   x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization    1.9 M
+ qemu-kvm                                   x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     21 k
+ qemu-kvm-block-curl                        x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     32 k
+ qemu-kvm-block-gluster                     x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     32 k
+ qemu-kvm-block-iscsi                       x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     39 k
+ qemu-kvm-block-rbd                         x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     32 k
+ qemu-kvm-block-ssh                         x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     33 k
+ qemu-kvm-common                            x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization    880 k
+ qemu-kvm-core                              x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization    3.2 M
+ seabios-bin                                noarch 1.14.0-1.el8s       ovirt-4.4-centos-advanced-virtualization    131 k
+ seavgabios-bin                             noarch 1.14.0-1.el8s       ovirt-4.4-centos-advanced-virtualization     41 k
+Installing dependencies:
+ autogen-libopts                            x86_64 5.18.12-8.el8       rhel-8-for-x86_64-appstream-rpms             75 k
+ gnutls-dane                                x86_64 3.6.16-4.el8        rhel-8-for-x86_64-appstream-rpms             52 k
+ gnutls-utils                               x86_64 3.6.16-4.el8        rhel-8-for-x86_64-appstream-rpms            348 k
+ libgfchangelog0                            x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                    67 k
+     replacing  glusterfs-libs.x86_64 6.0-56.4.el8
+ libgfrpc0                                  x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                    89 k
+     replacing  glusterfs-libs.x86_64 6.0-56.4.el8
+ libgfxdr0                                  x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                    61 k
+     replacing  glusterfs-libs.x86_64 6.0-56.4.el8
+ libglusterd0                               x86_64 8.6-2.el8s          ovirt-4.4-centos-gluster8                    45 k
+     replacing  glusterfs-libs.x86_64 6.0-56.4.el8
+ libtpms                                    x86_64 0.8.6-0.20210910git7a4d46a119.el8.0
+                                                                       epel                                        369 k
+ lttng-ust                                  x86_64 2.8.1-11.el8        rhel-8-for-x86_64-appstream-rpms            259 k
+ mdevctl                                    noarch 0.81-1.el8          rhel-8-for-x86_64-appstream-rpms             33 k
+ qemu-kvm-docs                              x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization    885 k
+ qemu-kvm-hw-usbredir                       x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     43 k
+ qemu-kvm-ui-opengl                         x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     34 k
+ qemu-kvm-ui-spice                          x86_64 15:6.0.0-33.el8s    ovirt-4.4-centos-advanced-virtualization     82 k
+ swtpm                                      x86_64 0.6.0-2.20210607gitea627b3.el8s
+                                                                       ovirt-4.4-centos-advanced-virtualization     39 k
+ swtpm-libs                                 x86_64 0.6.0-2.20210607gitea627b3.el8s
+                                                                       ovirt-4.4-centos-advanced-virtualization     42 k
+ swtpm-tools                                x86_64 0.6.0-2.20210607gitea627b3.el8s
+                                                                       ovirt-4.4-centos-advanced-virtualization    109 k
+
+Transaction Summary
+=========================================================================================================================
+Install  19 Packages
+Upgrade  47 Packages
+
+Total download size: 29 M
+Downloading Packages:
+(1/66): libgfchangelog0-8.6-2.el8s.x86_64.rpm                                            396 kB/s |  67 kB     00:00    
+(2/66): libgfapi0-8.6-2.el8s.x86_64.rpm                                                  693 kB/s | 125 kB     00:00    
+(3/66): libgfxdr0-8.6-2.el8s.x86_64.rpm                                                  1.5 MB/s |  61 kB     00:00    
+(4/66): libgfrpc0-8.6-2.el8s.x86_64.rpm                                                  1.4 MB/s |  89 kB     00:00    
+(5/66): libglusterd0-8.6-2.el8s.x86_64.rpm                                               1.1 MB/s |  45 kB     00:00    
+(6/66): libglusterfs0-8.6-2.el8s.x86_64.rpm                                              4.3 MB/s | 350 kB     00:00    
+(7/66): libtpms-0.8.6-0.20210910git7a4d46a119.el8.0.x86_64.rpm                           1.0 MB/s | 369 kB     00:00    
+(8/66): qemu-kvm-hw-usbredir-6.0.0-33.el8s.x86_64.rpm                                    389 kB/s |  43 kB     00:00    
+(9/66): qemu-kvm-ui-opengl-6.0.0-33.el8s.x86_64.rpm                                      505 kB/s |  34 kB     00:00    
+(10/66): swtpm-0.6.0-2.20210607gitea627b3.el8s.x86_64.rpm                                644 kB/s |  39 kB     00:00    
+(11/66): qemu-kvm-ui-spice-6.0.0-33.el8s.x86_64.rpm                                      1.2 MB/s |  82 kB     00:00    
+(12/66): qemu-kvm-docs-6.0.0-33.el8s.x86_64.rpm                                          3.5 MB/s | 885 kB     00:00    
+(13/66): swtpm-libs-0.6.0-2.20210607gitea627b3.el8s.x86_64.rpm                           1.9 MB/s |  42 kB     00:00    
+(14/66): swtpm-tools-0.6.0-2.20210607gitea627b3.el8s.x86_64.rpm                          1.6 MB/s | 109 kB     00:00    
+(15/66): mdevctl-0.81-1.el8.noarch.rpm                                                    67 kB/s |  33 kB     00:00    
+(16/66): autogen-libopts-5.18.12-8.el8.x86_64.rpm                                        133 kB/s |  75 kB     00:00    
+(17/66): lttng-ust-2.8.1-11.el8.x86_64.rpm                                               406 kB/s | 259 kB     00:00    
+(18/66): gnutls-dane-3.6.16-4.el8.x86_64.rpm                                             143 kB/s |  52 kB     00:00    
+(19/66): gnutls-utils-3.6.16-4.el8.x86_64.rpm                                            787 kB/s | 348 kB     00:00    
+(20/66): glusterfs-8.6-2.el8s.x86_64.rpm                                                 5.9 MB/s | 689 kB     00:00    
+(21/66): glusterfs-cli-8.6-2.el8s.x86_64.rpm                                             5.3 MB/s | 214 kB     00:00    
+(22/66): glusterfs-client-xlators-8.6-2.el8s.x86_64.rpm                                   14 MB/s | 899 kB     00:00    
+(23/66): glusterfs-fuse-8.6-2.el8s.x86_64.rpm                                            4.8 MB/s | 171 kB     00:00    
+(24/66): librados2-16.2.7-1.el8s.x86_64.rpm                                              5.7 MB/s | 3.8 MB     00:00    
+(25/66): librbd1-16.2.7-1.el8s.x86_64.rpm                                                1.4 MB/s | 4.2 MB     00:02    
+(26/66): libvirt-daemon-7.6.0-6.el8s.x86_64.rpm                                          2.7 MB/s | 420 kB     00:00    
+(27/66): libvirt-daemon-config-network-7.6.0-6.el8s.x86_64.rpm                           2.4 MB/s |  76 kB     00:00    
+(28/66): libvirt-daemon-driver-interface-7.6.0-6.el8s.x86_64.rpm                         6.0 MB/s | 215 kB     00:00    
+(29/66): libvirt-daemon-driver-network-7.6.0-6.el8s.x86_64.rpm                           8.0 MB/s | 245 kB     00:00    
+(30/66): libvirt-daemon-driver-nodedev-7.6.0-6.el8s.x86_64.rpm                           5.2 MB/s | 225 kB     00:00    
+(31/66): libvirt-daemon-driver-nwfilter-7.6.0-6.el8s.x86_64.rpm                          5.3 MB/s | 241 kB     00:00    
+(32/66): libvirt-daemon-driver-qemu-7.6.0-6.el8s.x86_64.rpm                              9.0 MB/s | 920 kB     00:00    
+(33/66): libvirt-daemon-driver-secret-7.6.0-6.el8s.x86_64.rpm                            7.4 MB/s | 205 kB     00:00    
+(34/66): libvirt-daemon-driver-storage-7.6.0-6.el8s.x86_64.rpm                           3.2 MB/s |  74 kB     00:00    
+(35/66): libvirt-daemon-driver-storage-core-7.6.0-6.el8s.x86_64.rpm                      8.6 MB/s | 261 kB     00:00    
+(36/66): libvirt-daemon-driver-storage-disk-7.6.0-6.el8s.x86_64.rpm                      3.3 MB/s |  85 kB     00:00    
+(37/66): libvirt-daemon-driver-storage-gluster-7.6.0-6.el8s.x86_64.rpm                   3.7 MB/s |  87 kB     00:00    
+(38/66): libvirt-daemon-driver-storage-iscsi-7.6.0-6.el8s.x86_64.rpm                     3.4 MB/s |  82 kB     00:00    
+(39/66): libvirt-daemon-driver-storage-iscsi-direct-7.6.0-6.el8s.x86_64.rpm              3.3 MB/s |  84 kB     00:00    
+(40/66): libvirt-daemon-driver-storage-logical-7.6.0-6.el8s.x86_64.rpm                   3.5 MB/s |  86 kB     00:00    
+(41/66): libvirt-daemon-driver-storage-mpath-7.6.0-6.el8s.x86_64.rpm                     3.2 MB/s |  80 kB     00:00    
+(42/66): libvirt-daemon-driver-storage-rbd-7.6.0-6.el8s.x86_64.rpm                       3.8 MB/s |  90 kB     00:00    
+(43/66): libvirt-daemon-driver-storage-scsi-7.6.0-6.el8s.x86_64.rpm                      3.4 MB/s |  82 kB     00:00    
+(44/66): libvirt-daemon-kvm-7.6.0-6.el8s.x86_64.rpm                                      2.9 MB/s |  74 kB     00:00    
+(45/66): libvirt-libs-7.6.0-6.el8s.x86_64.rpm                                             17 MB/s | 4.5 MB     00:00    
+(46/66): qemu-guest-agent-6.0.0-33.el8s.x86_64.rpm                                       3.7 MB/s | 195 kB     00:00    
+(47/66): qemu-img-6.0.0-33.el8s.x86_64.rpm                                                14 MB/s | 1.9 MB     00:00    
+(48/66): qemu-kvm-6.0.0-33.el8s.x86_64.rpm                                               583 kB/s |  21 kB     00:00    
+(49/66): qemu-kvm-block-curl-6.0.0-33.el8s.x86_64.rpm                                    1.2 MB/s |  32 kB     00:00    
+(50/66): qemu-kvm-block-gluster-6.0.0-33.el8s.x86_64.rpm                                 1.5 MB/s |  32 kB     00:00    
+(51/66): qemu-kvm-block-iscsi-6.0.0-33.el8s.x86_64.rpm                                   1.7 MB/s |  39 kB     00:00    
+(52/66): qemu-kvm-block-rbd-6.0.0-33.el8s.x86_64.rpm                                     946 kB/s |  32 kB     00:00    
+(53/66): qemu-kvm-block-ssh-6.0.0-33.el8s.x86_64.rpm                                     1.5 MB/s |  33 kB     00:00    
+(54/66): qemu-kvm-common-6.0.0-33.el8s.x86_64.rpm                                        9.3 MB/s | 880 kB     00:00    
+(55/66): qemu-kvm-core-6.0.0-33.el8s.x86_64.rpm                                           16 MB/s | 3.2 MB     00:00    
+(56/66): python3-cairo-1.18.1-2.el8.x86_64.rpm                                            22 kB/s |  93 kB     00:04    
+(57/66): seabios-bin-1.14.0-1.el8s.noarch.rpm                                            1.8 MB/s | 131 kB     00:00    
+(58/66): seavgabios-bin-1.14.0-1.el8s.noarch.rpm                                         422 kB/s |  41 kB     00:00    
+(59/66): python3-pexpect-4.7.0-4.el8.noarch.rpm                                          239 kB/s | 144 kB     00:00    
+(60/66): jansson-2.12-5.el8.x86_64.rpm                                                    23 kB/s |  45 kB     00:01    
+(61/66): libzstd-1.4.5-6.el8.x86_64.rpm                                                  208 kB/s | 335 kB     00:01    
+(62/66): python3-pyparsing-2.4.6-1.el8.noarch.rpm                                        930 kB/s | 161 kB     00:00    
+(63/66): python3-requests-2.22.0-7.el8.noarch.rpm                                        1.6 MB/s | 123 kB     00:00    
+(64/66): python3-psutil-5.7.2-1.el8.x86_64.rpm                                           1.0 MB/s | 419 kB     00:00    
+(65/66): python3-six-1.15.0-2.el8.noarch.rpm                                             747 kB/s |  39 kB     00:00    
+(66/66): python3-pyyaml-5.1.2-3.el8.x86_64.rpm                                            25 kB/s | 197 kB     00:07    
+-------------------------------------------------------------------------------------------------------------------------
+Total                                                                                    1.9 MB/s |  29 MB     00:15     
+Extra Packages for Enterprise Linux 8 - x86_64                                           1.3 MB/s | 1.6 kB     00:00    
+Importing GPG key 0x2F86D6A1:
+ Userid     : "Fedora EPEL (8) <epel@fedoraproject.org>"
+ Fingerprint: 94E2 79EB 8D8F 25B2 1810 ADF1 21EA 45AB 2F86 D6A1
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-8
+Key imported successfully
+CentOS-8 - Gluster 8                                                                     714  B/s | 1.0 kB     00:01    
+Importing GPG key 0xE451E5B5:
+ Userid     : "CentOS Storage SIG (http://wiki.centos.org/SpecialInterestGroup/Storage) <security@centos.org>"
+ Fingerprint: 7412 9C0B 173B 071A 3775 951A D4A2 E50B E451 E5B5
+ From       : https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-Storage
+Key imported successfully
+CentOS-8 - Advanced Virtualization                                                       808  B/s | 1.0 kB     00:01    
+Importing GPG key 0x61E8806C:
+ Userid     : "CentOS Virtualization SIG (http://wiki.centos.org/SpecialInterestGroup/Virtualization) <security@centos.org>"
+ Fingerprint: A7C8 E761 309D 2F1C 92C5 0B62 7AEB BE82 61E8 806C
+ From       : https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-Virtualization
+Key imported successfully
+Copr repo for EL8_collection owned by sbonazzo                                           728  B/s | 1.0 kB     00:01    
+Importing GPG key 0x119783D1:
+ Userid     : "sbonazzo_EL8_collection (None) <sbonazzo#EL8_collection@copr.fedorahosted.org>"
+ Fingerprint: 42A2 7AF4 DCA1 3DC7 02B2 E8BE 35CB 6F97 1197 83D1
+ From       : https://copr-be.cloud.fedoraproject.org/results/sbonazzo/EL8_collection/pubkey.gpg
+Key imported successfully
+CentOS-8 - OpsTools - collectd - vault                                                   679  B/s | 1.0 kB     00:01    
+Importing GPG key 0x51BC2A13:
+ Userid     : "CentOS OpsTools SIG (https://wiki.centos.org/SpecialInterestGroup/OpsTools) <security@centos.org>"
+ Fingerprint: 7872 8176 9AD7 3878 85EE A649 4FD9 5327 51BC 2A13
+ From       : https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-OpsTools
+Key imported successfully
+CentOS-8 - OpenStack victoria                                                            739  B/s | 1.0 kB     00:01    
+Importing GPG key 0x764429E6:
+ Userid     : "CentOS Cloud SIG (http://wiki.centos.org/SpecialInterestGroup/Cloud) <security@centos.org>"
+ Fingerprint: 736A F511 6D9C 40E2 AF6B 074B F9B9 FEE7 7644 29E6
+ From       : https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-Cloud
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                 1/1 
+  Running scriptlet: libvirt-libs-7.6.0-6.el8s.x86_64                                                                1/1 
+  Upgrading        : libvirt-libs-7.6.0-6.el8s.x86_64                                                              1/115 
+  Running scriptlet: libvirt-daemon-7.6.0-6.el8s.x86_64                                                            2/115 
+  Upgrading        : libvirt-daemon-7.6.0-6.el8s.x86_64                                                            2/115 
+  Running scriptlet: libvirt-daemon-7.6.0-6.el8s.x86_64                                                            2/115 
+  Installing       : libgfxdr0-8.6-2.el8s.x86_64                                                                   3/115 
+  Running scriptlet: libgfxdr0-8.6-2.el8s.x86_64                                                                   3/115 
+  Installing       : libglusterfs0-8.6-2.el8s.x86_64                                                               4/115 
+  Running scriptlet: libglusterfs0-8.6-2.el8s.x86_64                                                               4/115 
+  Installing       : libgfrpc0-8.6-2.el8s.x86_64                                                                   5/115 
+  Running scriptlet: libgfrpc0-8.6-2.el8s.x86_64                                                                   5/115 
+  Upgrading        : qemu-img-15:6.0.0-33.el8s.x86_64                                                              6/115 
+  Upgrading        : libvirt-daemon-driver-storage-core-7.6.0-6.el8s.x86_64                                        7/115 
+  Installing       : libtpms-0.8.6-0.20210910git7a4d46a119.el8.0.x86_64                                            8/115 
+  Upgrading        : glusterfs-client-xlators-8.6-2.el8s.x86_64                                                    9/115 
+  Installing       : libgfapi0-8.6-2.el8s.x86_64                                                                  10/115 
+  Running scriptlet: libgfapi0-8.6-2.el8s.x86_64                                                                  10/115 
+  Upgrading        : libvirt-daemon-driver-network-7.6.0-6.el8s.x86_64                                            11/115 
+  Running scriptlet: libvirt-daemon-driver-network-7.6.0-6.el8s.x86_64                                            11/115 
+  Installing       : lttng-ust-2.8.1-11.el8.x86_64                                                                12/115 
+  Running scriptlet: lttng-ust-2.8.1-11.el8.x86_64                                                                12/115 
+  Upgrading        : librados2-2:16.2.7-1.el8s.x86_64                                                             13/115 
+  Running scriptlet: librados2-2:16.2.7-1.el8s.x86_64                                                             13/115 
+  Upgrading        : librbd1-2:16.2.7-1.el8s.x86_64                                                               14/115 
+  Running scriptlet: librbd1-2:16.2.7-1.el8s.x86_64                                                               14/115 
+  Upgrading        : libvirt-daemon-driver-storage-rbd-7.6.0-6.el8s.x86_64                                        15/115 
+  Installing       : swtpm-libs-0.6.0-2.20210607gitea627b3.el8s.x86_64                                            16/115 
+  Installing       : swtpm-0.6.0-2.20210607gitea627b3.el8s.x86_64                                                 17/115 
+  Running scriptlet: swtpm-0.6.0-2.20210607gitea627b3.el8s.x86_64                                                 17/115 
+  Upgrading        : libvirt-daemon-driver-storage-disk-7.6.0-6.el8s.x86_64                                       18/115 
+  Upgrading        : libvirt-daemon-driver-storage-iscsi-7.6.0-6.el8s.x86_64                                      19/115 
+  Upgrading        : libvirt-daemon-driver-storage-iscsi-direct-7.6.0-6.el8s.x86_64                               20/115 
+  Upgrading        : libvirt-daemon-driver-storage-logical-7.6.0-6.el8s.x86_64                                    21/115 
+  Upgrading        : libvirt-daemon-driver-storage-mpath-7.6.0-6.el8s.x86_64                                      22/115 
+  Upgrading        : libvirt-daemon-driver-storage-scsi-7.6.0-6.el8s.x86_64                                       23/115 
+  Running scriptlet: glusterfs-8.6-2.el8s.x86_64                                                                  24/115 
+  Upgrading        : glusterfs-8.6-2.el8s.x86_64                                                                  24/115 
+  Running scriptlet: glusterfs-8.6-2.el8s.x86_64                                                                  24/115 
+  Installing       : libglusterd0-8.6-2.el8s.x86_64                                                               25/115 
+  Running scriptlet: libglusterd0-8.6-2.el8s.x86_64                                                               25/115 
+  Upgrading        : glusterfs-cli-8.6-2.el8s.x86_64                                                              26/115 
+  Upgrading        : libvirt-daemon-driver-storage-gluster-7.6.0-6.el8s.x86_64                                    27/115 
+  Upgrading        : libvirt-daemon-driver-storage-7.6.0-6.el8s.x86_64                                            28/115 
+  Upgrading        : libvirt-daemon-driver-interface-7.6.0-6.el8s.x86_64                                          29/115 
+  Upgrading        : libvirt-daemon-driver-nwfilter-7.6.0-6.el8s.x86_64                                           30/115 
+  Upgrading        : libvirt-daemon-driver-secret-7.6.0-6.el8s.x86_64                                             31/115 
+  Upgrading        : seavgabios-bin-1.14.0-1.el8s.noarch                                                          32/115 
+  Upgrading        : seabios-bin-1.14.0-1.el8s.noarch                                                             33/115 
+  Upgrading        : qemu-kvm-common-15:6.0.0-33.el8s.x86_64                                                      34/115 
+  Running scriptlet: qemu-kvm-common-15:6.0.0-33.el8s.x86_64                                                      34/115 
+  Installing       : qemu-kvm-ui-opengl-15:6.0.0-33.el8s.x86_64                                                   35/115 
+  Installing       : qemu-kvm-ui-spice-15:6.0.0-33.el8s.x86_64                                                    36/115 
+  Installing       : qemu-kvm-hw-usbredir-15:6.0.0-33.el8s.x86_64                                                 37/115 
+  Upgrading        : qemu-kvm-block-curl-15:6.0.0-33.el8s.x86_64                                                  38/115 
+  Upgrading        : qemu-kvm-block-gluster-15:6.0.0-33.el8s.x86_64                                               39/115 
+  Upgrading        : qemu-kvm-block-iscsi-15:6.0.0-33.el8s.x86_64                                                 40/115 
+  Upgrading        : qemu-kvm-block-rbd-15:6.0.0-33.el8s.x86_64                                                   41/115 
+  Upgrading        : qemu-kvm-block-ssh-15:6.0.0-33.el8s.x86_64                                                   42/115 
+  Upgrading        : qemu-kvm-core-15:6.0.0-33.el8s.x86_64                                                        43/115 
+  Installing       : gnutls-dane-3.6.16-4.el8.x86_64                                                              44/115 
+  Installing       : mdevctl-0.81-1.el8.noarch                                                                    45/115 
+  Upgrading        : libvirt-daemon-driver-nodedev-7.6.0-6.el8s.x86_64                                            46/115 
+  Installing       : autogen-libopts-5.18.12-8.el8.x86_64                                                         47/115 
+  Installing       : gnutls-utils-3.6.16-4.el8.x86_64                                                             48/115 
+  Installing       : swtpm-tools-0.6.0-2.20210607gitea627b3.el8s.x86_64                                           49/115 
+  Running scriptlet: libvirt-daemon-driver-qemu-7.6.0-6.el8s.x86_64                                               50/115 
+  Upgrading        : libvirt-daemon-driver-qemu-7.6.0-6.el8s.x86_64                                               50/115 
+  Installing       : qemu-kvm-docs-15:6.0.0-33.el8s.x86_64                                                        51/115 
+  Upgrading        : qemu-kvm-15:6.0.0-33.el8s.x86_64                                                             52/115 
+  Upgrading        : libvirt-daemon-kvm-7.6.0-6.el8s.x86_64                                                       53/115 
+  Upgrading        : glusterfs-fuse-8.6-2.el8s.x86_64                                                             54/115 
+  Upgrading        : libvirt-daemon-config-network-7.6.0-6.el8s.x86_64                                            55/115 
+  Running scriptlet: libvirt-daemon-config-network-7.6.0-6.el8s.x86_64                                            55/115 
+  Installing       : libgfchangelog0-8.6-2.el8s.x86_64                                                            56/115 
+  Running scriptlet: libgfchangelog0-8.6-2.el8s.x86_64                                                            56/115 
+  Upgrading        : python3-six-1.15.0-2.el8.noarch                                                              57/115 
+  Upgrading        : python3-requests-2.22.0-7.el8.noarch                                                         58/115 
+  Upgrading        : python3-pyparsing-2.4.6-1.el8.noarch                                                         59/115 
+  Upgrading        : python3-psutil-5.7.2-1.el8.x86_64                                                            60/115 
+  Upgrading        : libzstd-1.4.5-6.el8.x86_64                                                                   61/115 
+  Upgrading        : jansson-2.12-5.el8.x86_64                                                                    62/115 
+  Upgrading        : python3-pexpect-4.7.0-4.el8.noarch                                                           63/115 
+  Upgrading        : qemu-guest-agent-15:6.0.0-33.el8s.x86_64                                                     64/115 
+  Running scriptlet: qemu-guest-agent-15:6.0.0-33.el8s.x86_64                                                     64/115 
+  Upgrading        : python3-pyyaml-5.1.2-3.el8.x86_64                                                            65/115 
+  Upgrading        : python3-cairo-1.18.1-2.el8.x86_64                                                            66/115 
+  Cleanup          : libvirt-daemon-kvm-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                           67/115 
+  Cleanup          : libvirt-daemon-driver-storage-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                68/115 
+  Cleanup          : qemu-kvm-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                                  69/115 
+  Cleanup          : libvirt-daemon-driver-qemu-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                   70/115 
+  Cleanup          : libvirt-daemon-driver-interface-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64              71/115 
+  Cleanup          : libvirt-daemon-driver-nodedev-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                72/115 
+  Cleanup          : libvirt-daemon-driver-nwfilter-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64               73/115 
+  Cleanup          : libvirt-daemon-driver-secret-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                 74/115 
+  Cleanup          : libvirt-daemon-driver-storage-gluster-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64        75/115 
+  Cleanup          : qemu-kvm-block-gluster-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                    76/115 
+  Obsoleting       : glusterfs-api-6.0-56.4.el8.x86_64                                                            77/115 
+  Cleanup          : libvirt-daemon-driver-storage-rbd-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64            78/115 
+  Cleanup          : glusterfs-fuse-6.0-56.4.el8.x86_64                                                           79/115 
+  Cleanup          : libvirt-daemon-config-network-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                80/115 
+  Cleanup          : python3-six-1.11.0-8.el8.noarch                                                              81/115 
+  Cleanup          : python3-requests-2.20.0-2.1.el8_1.noarch                                                     82/115 
+  Cleanup          : python3-pyparsing-2.1.10-7.el8.noarch                                                        83/115 
+  Cleanup          : python3-pexpect-4.3.1-3.el8.noarch                                                           84/115 
+  Cleanup          : libvirt-daemon-driver-network-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                85/115 
+  Running scriptlet: libvirt-daemon-driver-network-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                85/115 
+  Cleanup          : libvirt-daemon-driver-storage-scsi-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64           86/115 
+  Cleanup          : glusterfs-6.0-56.4.el8.x86_64                                                                87/115 
+  Running scriptlet: glusterfs-6.0-56.4.el8.x86_64                                                                87/115 
+  Cleanup          : glusterfs-client-xlators-6.0-56.4.el8.x86_64                                                 88/115 
+  Cleanup          : glusterfs-cli-6.0-56.4.el8.x86_64                                                            89/115 
+  Cleanup          : qemu-kvm-core-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                             90/115 
+  Cleanup          : libvirt-daemon-driver-storage-disk-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64           91/115 
+  Cleanup          : libvirt-daemon-driver-storage-iscsi-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64          92/115 
+  Cleanup          : libvirt-daemon-driver-storage-iscsi-direct-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_6    93/115 
+  Cleanup          : libvirt-daemon-driver-storage-logical-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64        94/115 
+  Cleanup          : libvirt-daemon-driver-storage-mpath-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64          95/115 
+  Cleanup          : libvirt-daemon-driver-storage-core-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64           96/115 
+  Running scriptlet: libvirt-daemon-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                               97/115 
+  Cleanup          : libvirt-daemon-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                               97/115 
+  Running scriptlet: libvirt-daemon-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                               97/115 
+  Cleanup          : qemu-kvm-block-rbd-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                        98/115 
+  Cleanup          : librbd1-1:12.2.7-9.el8.x86_64                                                                99/115 
+  Running scriptlet: librbd1-1:12.2.7-9.el8.x86_64                                                                99/115 
+  Cleanup          : qemu-kvm-block-curl-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                      100/115 
+  Cleanup          : qemu-kvm-block-iscsi-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                     101/115 
+  Cleanup          : qemu-kvm-block-ssh-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                       102/115 
+  Cleanup          : seabios-bin-1.13.0-2.module+el8.3.0+7353+9de0a3cc.noarch                                    103/115 
+  Cleanup          : seavgabios-bin-1.13.0-2.module+el8.3.0+7353+9de0a3cc.noarch                                 104/115 
+  Running scriptlet: qemu-kvm-common-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                          105/115 
+  Cleanup          : qemu-kvm-common-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                          105/115 
+  Running scriptlet: qemu-kvm-common-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                          105/115 
+  Cleanup          : librados2-1:12.2.7-9.el8.x86_64                                                             106/115 
+  Running scriptlet: librados2-1:12.2.7-9.el8.x86_64                                                             106/115 
+  Cleanup          : libvirt-libs-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                                107/115 
+  Running scriptlet: libvirt-libs-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                                107/115 
+  Cleanup          : qemu-img-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                                 108/115 
+  Obsoleting       : glusterfs-libs-6.0-56.4.el8.x86_64                                                          109/115 
+  Cleanup          : python3-psutil-5.4.3-11.el8.x86_64                                                          110/115 
+  Cleanup          : libzstd-1.4.4-1.el8.x86_64                                                                  111/115 
+  Cleanup          : jansson-2.11-3.el8.x86_64                                                                   112/115 
+  Running scriptlet: qemu-guest-agent-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                         113/115 
+  Cleanup          : qemu-guest-agent-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                         113/115 
+  Running scriptlet: qemu-guest-agent-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                         113/115 
+  Cleanup          : python3-pyyaml-3.12-12.el8.x86_64                                                           114/115 
+  Cleanup          : python3-cairo-1.16.3-6.el8.x86_64                                                           115/115 
+  Running scriptlet: libvirt-daemon-7.6.0-6.el8s.x86_64                                                          115/115 
+  Running scriptlet: swtpm-0.6.0-2.20210607gitea627b3.el8s.x86_64                                                115/115 
+  Running scriptlet: libvirt-daemon-config-network-7.6.0-6.el8s.x86_64                                           115/115 
+  Running scriptlet: python3-cairo-1.16.3-6.el8.x86_64                                                           115/115 
+  Verifying        : libtpms-0.8.6-0.20210910git7a4d46a119.el8.0.x86_64                                            1/115 
+  Verifying        : libgfapi0-8.6-2.el8s.x86_64                                                                   2/115 
+  Verifying        : glusterfs-api-6.0-56.4.el8.x86_64                                                             3/115 
+  Verifying        : libgfchangelog0-8.6-2.el8s.x86_64                                                             4/115 
+  Verifying        : glusterfs-libs-6.0-56.4.el8.x86_64                                                            5/115 
+  Verifying        : libgfrpc0-8.6-2.el8s.x86_64                                                                   6/115 
+  Verifying        : libgfxdr0-8.6-2.el8s.x86_64                                                                   7/115 
+  Verifying        : libglusterd0-8.6-2.el8s.x86_64                                                                8/115 
+  Verifying        : libglusterfs0-8.6-2.el8s.x86_64                                                               9/115 
+  Verifying        : qemu-kvm-docs-15:6.0.0-33.el8s.x86_64                                                        10/115 
+  Verifying        : qemu-kvm-hw-usbredir-15:6.0.0-33.el8s.x86_64                                                 11/115 
+  Verifying        : qemu-kvm-ui-opengl-15:6.0.0-33.el8s.x86_64                                                   12/115 
+  Verifying        : qemu-kvm-ui-spice-15:6.0.0-33.el8s.x86_64                                                    13/115 
+  Verifying        : swtpm-0.6.0-2.20210607gitea627b3.el8s.x86_64                                                 14/115 
+  Verifying        : swtpm-libs-0.6.0-2.20210607gitea627b3.el8s.x86_64                                            15/115 
+  Verifying        : swtpm-tools-0.6.0-2.20210607gitea627b3.el8s.x86_64                                           16/115 
+  Verifying        : lttng-ust-2.8.1-11.el8.x86_64                                                                17/115 
+  Verifying        : autogen-libopts-5.18.12-8.el8.x86_64                                                         18/115 
+  Verifying        : mdevctl-0.81-1.el8.noarch                                                                    19/115 
+  Verifying        : gnutls-utils-3.6.16-4.el8.x86_64                                                             20/115 
+  Verifying        : gnutls-dane-3.6.16-4.el8.x86_64                                                              21/115 
+  Verifying        : librados2-2:16.2.7-1.el8s.x86_64                                                             22/115 
+  Verifying        : librados2-1:12.2.7-9.el8.x86_64                                                              23/115 
+  Verifying        : librbd1-2:16.2.7-1.el8s.x86_64                                                               24/115 
+  Verifying        : librbd1-1:12.2.7-9.el8.x86_64                                                                25/115 
+  Verifying        : glusterfs-8.6-2.el8s.x86_64                                                                  26/115 
+  Verifying        : glusterfs-6.0-56.4.el8.x86_64                                                                27/115 
+  Verifying        : glusterfs-cli-8.6-2.el8s.x86_64                                                              28/115 
+  Verifying        : glusterfs-cli-6.0-56.4.el8.x86_64                                                            29/115 
+  Verifying        : glusterfs-client-xlators-8.6-2.el8s.x86_64                                                   30/115 
+  Verifying        : glusterfs-client-xlators-6.0-56.4.el8.x86_64                                                 31/115 
+  Verifying        : glusterfs-fuse-8.6-2.el8s.x86_64                                                             32/115 
+  Verifying        : glusterfs-fuse-6.0-56.4.el8.x86_64                                                           33/115 
+  Verifying        : python3-cairo-1.18.1-2.el8.x86_64                                                            34/115 
+  Verifying        : python3-cairo-1.16.3-6.el8.x86_64                                                            35/115 
+  Verifying        : python3-pyyaml-5.1.2-3.el8.x86_64                                                            36/115 
+  Verifying        : python3-pyyaml-3.12-12.el8.x86_64                                                            37/115 
+  Verifying        : libvirt-daemon-7.6.0-6.el8s.x86_64                                                           38/115 
+  Verifying        : libvirt-daemon-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                               39/115 
+  Verifying        : libvirt-daemon-config-network-7.6.0-6.el8s.x86_64                                            40/115 
+  Verifying        : libvirt-daemon-config-network-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                41/115 
+  Verifying        : libvirt-daemon-driver-interface-7.6.0-6.el8s.x86_64                                          42/115 
+  Verifying        : libvirt-daemon-driver-interface-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64              43/115 
+  Verifying        : libvirt-daemon-driver-network-7.6.0-6.el8s.x86_64                                            44/115 
+  Verifying        : libvirt-daemon-driver-network-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                45/115 
+  Verifying        : libvirt-daemon-driver-nodedev-7.6.0-6.el8s.x86_64                                            46/115 
+  Verifying        : libvirt-daemon-driver-nodedev-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                47/115 
+  Verifying        : libvirt-daemon-driver-nwfilter-7.6.0-6.el8s.x86_64                                           48/115 
+  Verifying        : libvirt-daemon-driver-nwfilter-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64               49/115 
+  Verifying        : libvirt-daemon-driver-qemu-7.6.0-6.el8s.x86_64                                               50/115 
+  Verifying        : libvirt-daemon-driver-qemu-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                   51/115 
+  Verifying        : libvirt-daemon-driver-secret-7.6.0-6.el8s.x86_64                                             52/115 
+  Verifying        : libvirt-daemon-driver-secret-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                 53/115 
+  Verifying        : libvirt-daemon-driver-storage-7.6.0-6.el8s.x86_64                                            54/115 
+  Verifying        : libvirt-daemon-driver-storage-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                55/115 
+  Verifying        : libvirt-daemon-driver-storage-core-7.6.0-6.el8s.x86_64                                       56/115 
+  Verifying        : libvirt-daemon-driver-storage-core-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64           57/115 
+  Verifying        : libvirt-daemon-driver-storage-disk-7.6.0-6.el8s.x86_64                                       58/115 
+  Verifying        : libvirt-daemon-driver-storage-disk-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64           59/115 
+  Verifying        : libvirt-daemon-driver-storage-gluster-7.6.0-6.el8s.x86_64                                    60/115 
+  Verifying        : libvirt-daemon-driver-storage-gluster-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64        61/115 
+  Verifying        : libvirt-daemon-driver-storage-iscsi-7.6.0-6.el8s.x86_64                                      62/115 
+  Verifying        : libvirt-daemon-driver-storage-iscsi-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64          63/115 
+  Verifying        : libvirt-daemon-driver-storage-iscsi-direct-7.6.0-6.el8s.x86_64                               64/115 
+  Verifying        : libvirt-daemon-driver-storage-iscsi-direct-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_6    65/115 
+  Verifying        : libvirt-daemon-driver-storage-logical-7.6.0-6.el8s.x86_64                                    66/115 
+  Verifying        : libvirt-daemon-driver-storage-logical-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64        67/115 
+  Verifying        : libvirt-daemon-driver-storage-mpath-7.6.0-6.el8s.x86_64                                      68/115 
+  Verifying        : libvirt-daemon-driver-storage-mpath-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64          69/115 
+  Verifying        : libvirt-daemon-driver-storage-rbd-7.6.0-6.el8s.x86_64                                        70/115 
+  Verifying        : libvirt-daemon-driver-storage-rbd-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64            71/115 
+  Verifying        : libvirt-daemon-driver-storage-scsi-7.6.0-6.el8s.x86_64                                       72/115 
+  Verifying        : libvirt-daemon-driver-storage-scsi-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64           73/115 
+  Verifying        : libvirt-daemon-kvm-7.6.0-6.el8s.x86_64                                                       74/115 
+  Verifying        : libvirt-daemon-kvm-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                           75/115 
+  Verifying        : libvirt-libs-7.6.0-6.el8s.x86_64                                                             76/115 
+  Verifying        : libvirt-libs-6.0.0-37.1.module+el8.5.0+13858+39fdc467.x86_64                                 77/115 
+  Verifying        : qemu-guest-agent-15:6.0.0-33.el8s.x86_64                                                     78/115 
+  Verifying        : qemu-guest-agent-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                          79/115 
+  Verifying        : qemu-img-15:6.0.0-33.el8s.x86_64                                                             80/115 
+  Verifying        : qemu-img-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                                  81/115 
+  Verifying        : qemu-kvm-15:6.0.0-33.el8s.x86_64                                                             82/115 
+  Verifying        : qemu-kvm-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                                  83/115 
+  Verifying        : qemu-kvm-block-curl-15:6.0.0-33.el8s.x86_64                                                  84/115 
+  Verifying        : qemu-kvm-block-curl-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                       85/115 
+  Verifying        : qemu-kvm-block-gluster-15:6.0.0-33.el8s.x86_64                                               86/115 
+  Verifying        : qemu-kvm-block-gluster-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                    87/115 
+  Verifying        : qemu-kvm-block-iscsi-15:6.0.0-33.el8s.x86_64                                                 88/115 
+  Verifying        : qemu-kvm-block-iscsi-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                      89/115 
+  Verifying        : qemu-kvm-block-rbd-15:6.0.0-33.el8s.x86_64                                                   90/115 
+  Verifying        : qemu-kvm-block-rbd-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                        91/115 
+  Verifying        : qemu-kvm-block-ssh-15:6.0.0-33.el8s.x86_64                                                   92/115 
+  Verifying        : qemu-kvm-block-ssh-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                        93/115 
+  Verifying        : qemu-kvm-common-15:6.0.0-33.el8s.x86_64                                                      94/115 
+  Verifying        : qemu-kvm-common-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                           95/115 
+  Verifying        : qemu-kvm-core-15:6.0.0-33.el8s.x86_64                                                        96/115 
+  Verifying        : qemu-kvm-core-15:4.2.0-59.module+el8.5.0+13495+8166cdf8.1.x86_64                             97/115 
+  Verifying        : seabios-bin-1.14.0-1.el8s.noarch                                                             98/115 
+  Verifying        : seabios-bin-1.13.0-2.module+el8.3.0+7353+9de0a3cc.noarch                                     99/115 
+  Verifying        : seavgabios-bin-1.14.0-1.el8s.noarch                                                         100/115 
+  Verifying        : seavgabios-bin-1.13.0-2.module+el8.3.0+7353+9de0a3cc.noarch                                 101/115 
+  Verifying        : python3-pexpect-4.7.0-4.el8.noarch                                                          102/115 
+  Verifying        : python3-pexpect-4.3.1-3.el8.noarch                                                          103/115 
+  Verifying        : jansson-2.12-5.el8.x86_64                                                                   104/115 
+  Verifying        : jansson-2.11-3.el8.x86_64                                                                   105/115 
+  Verifying        : libzstd-1.4.5-6.el8.x86_64                                                                  106/115 
+  Verifying        : libzstd-1.4.4-1.el8.x86_64                                                                  107/115 
+  Verifying        : python3-psutil-5.7.2-1.el8.x86_64                                                           108/115 
+  Verifying        : python3-psutil-5.4.3-11.el8.x86_64                                                          109/115 
+  Verifying        : python3-pyparsing-2.4.6-1.el8.noarch                                                        110/115 
+  Verifying        : python3-pyparsing-2.1.10-7.el8.noarch                                                       111/115 
+  Verifying        : python3-requests-2.22.0-7.el8.noarch                                                        112/115 
+  Verifying        : python3-requests-2.20.0-2.1.el8_1.noarch                                                    113/115 
+  Verifying        : python3-six-1.15.0-2.el8.noarch                                                             114/115 
+  Verifying        : python3-six-1.11.0-8.el8.noarch                                                             115/115 
+Installed products updated.
+
+Upgraded:
+  glusterfs-8.6-2.el8s.x86_64                                                                                            
+  glusterfs-cli-8.6-2.el8s.x86_64                                                                                        
+  glusterfs-client-xlators-8.6-2.el8s.x86_64                                                                             
+  glusterfs-fuse-8.6-2.el8s.x86_64                                                                                       
+  jansson-2.12-5.el8.x86_64                                                                                              
+  librados2-2:16.2.7-1.el8s.x86_64                                                                                       
+  librbd1-2:16.2.7-1.el8s.x86_64                                                                                         
+  libvirt-daemon-7.6.0-6.el8s.x86_64                                                                                     
+  libvirt-daemon-config-network-7.6.0-6.el8s.x86_64                                                                      
+  libvirt-daemon-driver-interface-7.6.0-6.el8s.x86_64                                                                    
+  libvirt-daemon-driver-network-7.6.0-6.el8s.x86_64                                                                      
+  libvirt-daemon-driver-nodedev-7.6.0-6.el8s.x86_64                                                                      
+  libvirt-daemon-driver-nwfilter-7.6.0-6.el8s.x86_64                                                                     
+  libvirt-daemon-driver-qemu-7.6.0-6.el8s.x86_64                                                                         
+  libvirt-daemon-driver-secret-7.6.0-6.el8s.x86_64                                                                       
+  libvirt-daemon-driver-storage-7.6.0-6.el8s.x86_64                                                                      
+  libvirt-daemon-driver-storage-core-7.6.0-6.el8s.x86_64                                                                 
+  libvirt-daemon-driver-storage-disk-7.6.0-6.el8s.x86_64                                                                 
+  libvirt-daemon-driver-storage-gluster-7.6.0-6.el8s.x86_64                                                              
+  libvirt-daemon-driver-storage-iscsi-7.6.0-6.el8s.x86_64                                                                
+  libvirt-daemon-driver-storage-iscsi-direct-7.6.0-6.el8s.x86_64                                                         
+  libvirt-daemon-driver-storage-logical-7.6.0-6.el8s.x86_64                                                              
+  libvirt-daemon-driver-storage-mpath-7.6.0-6.el8s.x86_64                                                                
+  libvirt-daemon-driver-storage-rbd-7.6.0-6.el8s.x86_64                                                                  
+  libvirt-daemon-driver-storage-scsi-7.6.0-6.el8s.x86_64                                                                 
+  libvirt-daemon-kvm-7.6.0-6.el8s.x86_64                                                                                 
+  libvirt-libs-7.6.0-6.el8s.x86_64                                                                                       
+  libzstd-1.4.5-6.el8.x86_64                                                                                             
+  python3-cairo-1.18.1-2.el8.x86_64                                                                                      
+  python3-pexpect-4.7.0-4.el8.noarch                                                                                     
+  python3-psutil-5.7.2-1.el8.x86_64                                                                                      
+  python3-pyparsing-2.4.6-1.el8.noarch                                                                                   
+  python3-pyyaml-5.1.2-3.el8.x86_64                                                                                      
+  python3-requests-2.22.0-7.el8.noarch                                                                                   
+  python3-six-1.15.0-2.el8.noarch                                                                                        
+  qemu-guest-agent-15:6.0.0-33.el8s.x86_64                                                                               
+  qemu-img-15:6.0.0-33.el8s.x86_64                                                                                       
+  qemu-kvm-15:6.0.0-33.el8s.x86_64                                                                                       
+  qemu-kvm-block-curl-15:6.0.0-33.el8s.x86_64                                                                            
+  qemu-kvm-block-gluster-15:6.0.0-33.el8s.x86_64                                                                         
+  qemu-kvm-block-iscsi-15:6.0.0-33.el8s.x86_64                                                                           
+  qemu-kvm-block-rbd-15:6.0.0-33.el8s.x86_64                                                                             
+  qemu-kvm-block-ssh-15:6.0.0-33.el8s.x86_64                                                                             
+  qemu-kvm-common-15:6.0.0-33.el8s.x86_64                                                                                
+  qemu-kvm-core-15:6.0.0-33.el8s.x86_64                                                                                  
+  seabios-bin-1.14.0-1.el8s.noarch                                                                                       
+  seavgabios-bin-1.14.0-1.el8s.noarch                                                                                    
+Installed:
+  autogen-libopts-5.18.12-8.el8.x86_64                        gnutls-dane-3.6.16-4.el8.x86_64                            
+  gnutls-utils-3.6.16-4.el8.x86_64                            libgfapi0-8.6-2.el8s.x86_64                                
+  libgfchangelog0-8.6-2.el8s.x86_64                           libgfrpc0-8.6-2.el8s.x86_64                                
+  libgfxdr0-8.6-2.el8s.x86_64                                 libglusterd0-8.6-2.el8s.x86_64                             
+  libglusterfs0-8.6-2.el8s.x86_64                             libtpms-0.8.6-0.20210910git7a4d46a119.el8.0.x86_64         
+  lttng-ust-2.8.1-11.el8.x86_64                               mdevctl-0.81-1.el8.noarch                                  
+  qemu-kvm-docs-15:6.0.0-33.el8s.x86_64                       qemu-kvm-hw-usbredir-15:6.0.0-33.el8s.x86_64               
+  qemu-kvm-ui-opengl-15:6.0.0-33.el8s.x86_64                  qemu-kvm-ui-spice-15:6.0.0-33.el8s.x86_64                  
+  swtpm-0.6.0-2.20210607gitea627b3.el8s.x86_64                swtpm-libs-0.6.0-2.20210607gitea627b3.el8s.x86_64          
+  swtpm-tools-0.6.0-2.20210607gitea627b3.el8s.x86_64         
+
+Complete!
