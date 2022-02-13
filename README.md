@@ -1840,18 +1840,6 @@ The expected output is
 <pre>
 [root@tektutor ~]# <b>dnf module enable -y javapackages-tools</b>
 Updating Subscription Management repositories.
-Last metadata expiration check: 0:17:33 ago on Sat 12 Feb 2022 04:08:55 PM PST.
-Error: Problems in request:
-missing groups or modules: javapackages-tools
-[root@tektutor ~]# subscription-manager repos \
-> --enable=rhel-8-for-x86_64-baseos-rpms \
-> --enable=rhel-8-for-x86_64-appstream-rpms \
-> --enable=codeready-builder-for-rhel-8-x86_64-rpms
-Repository 'rhel-8-for-x86_64-baseos-rpms' is enabled for this system.
-Repository 'rhel-8-for-x86_64-appstream-rpms' is enabled for this system.
-Repository 'codeready-builder-for-rhel-8-x86_64-rpms' is enabled for this system.
-[root@tektutor ~]# dnf module enable -y javapackages-tools
-Updating Subscription Management repositories.
 Red Hat CodeReady Linux Builder for RHEL 8 x86_64 (RPMs)                                                    3.4 MB/s | 6.4 MB     00:01    
 Last metadata expiration check: 0:00:01 ago on Sat 12 Feb 2022 04:28:13 PM PST.
 Dependencies resolved.
