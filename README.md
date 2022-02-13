@@ -1,16 +1,20 @@
-### Installing OpenShift Community Edition (OKD) of OpenShift
-I initially was trying to install Ovirt on RHEL 8.5 but unfornately OVirt 4.4 installation was failing due to some dependencies.  Hence, I had no other option other than moving to CentOS 7.7.
+### Installing OpenShift Community Edition (OKD) of OpenShift in RHEL 8.5
+I had setup RHEL 8.5 as Virtual Machine on my Dell Precision 7920 Tower.
 
-As a first step, I installed CentOS 7.7 64-bit as it is guaranteed to receive updates till year 2024. while CentOS 8.x has already reached it End of Life by Dec 2021 and updates stopped on 31st Jan 2022. 
+Dell Precision 7920 Tower Configuration
+- 128 GB RAM 
+- Dual Socket with Intel Xeon Silver Processor with 12 Cores on each Processor 
+- 1 TB SSD HDD.
 
-#### System Configuration
-I used my Dell Precision 7920 Tower with 128GB RAM, with Dual Socket with Intel Xeon Silver Processor with 12Cores on each Processor. It has a 1 TB SSD Hard drive.
+However for the Virtual Machine I allocated
+- 64 GB RAM
+- 12 Cores on each Processor i.e 12 Cores x 2 Processor = 24 Virtual Cores
+- 500 GB HDD
 
-For the CentOS 7.7, I allocated 64 GB RAM, 24 Cores with 500 GB HDD. Nested Virtualization i.e VT-X and IOMMU are enabled on VMWare Workstation.
+I enabled VT-X and IOMMU in VMWare Workstation Pro for this Virtual Machine.
 
-##### Enabling Software Repositories on a fresh RHEL 8.x OS
-For more detailed instructions, you may read this article
-https://access.redhat.com/solutions/253273
+##### Enabling Software Repositories on a fresh RHEL 8.5 OS
+After installing RHEL 8.5, you need to register your system with RedHat and enable the below repositories to install softwares. This requires an active RedHat account.  For learning purpose, RedHat offers a Developer license which lets you use RHEL 8.5 Free for non-commercial purpose.
 
 ```
 sudo subscription-manager register
@@ -26,7 +30,7 @@ sudo subscription-manager repos \
 --enable=rhel-8-for-x86_64-appstream-rpms \
 --enable=codeready-builder-for-rhel-8-x86_64-rpms
 ```
-When prompted for username and password, type your redhat developer credentials to register your OS with RedHat to let you install/upgrade softwares.
+When prompted for username and password, type your redhat developer credentials to register your OS.
 
 ### Installing DNS Server in RHEL 8.5
 ```
@@ -34,7 +38,7 @@ sudo dnf install bind bind-utils
 ```
 The expected output is
 <pre>
-[root@tektutor ~]# dnf install bind bind-utils
+[root@tektutor ~]# <b>dnf install bind bind-utils</b>
 Updating Subscription Management repositories.
 Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)                                                     15 MB/s |  38 MB     00:02    
 Red Hat Enterprise Linux 8 for x86_64 - BaseOS (RPMs)                                                        16 MB/s |  43 MB     00:02    
@@ -89,6 +93,81 @@ Installed:
 Complete!
 [root@tektutor ~]# 
 </pre>
+
+##### Configuring DNS Server
+In my case my RedHat 8.5 VM IP was 192.168.167.140, you may have to note down your IP address so that you can replace 192.168.167.140 with your IP address for the DNS Server configuration.
+
+You need to edit /etc/named.conf as shown below
+<pre>
+// named.conf
+//
+// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
+// server as a caching only nameserver (as a localhost DNS resolver only).
+//
+// See /usr/share/doc/bind*/sample/ for example named configuration files.
+//
+
+options {
+<b>//      listen-on port 53 { 127.0.0.1; };</b>
+<b>//      listen-on-v6 port 53 { ::1; };</b>
+        directory       "/var/named";
+        dump-file       "/var/named/data/cache_dump.db";
+        statistics-file "/var/named/data/named_stats.txt";
+        memstatistics-file "/var/named/data/named_mem_stats.txt";
+        secroots-file   "/var/named/data/named.secroots";
+        recursing-file  "/var/named/data/named.recursing";
+        allow-query     { localhost; <b>192.168.167.0/24;</b> };
+
+        /* 
+         - If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
+         - If you are building a RECURSIVE (caching) DNS server, you need to enable 
+           recursion. 
+         - If your recursive DNS server has a public IP address, you MUST enable access 
+           control to limit queries to your legitimate users. Failing to do so will
+           cause your server to become part of large scale DNS amplification 
+           attacks. Implementing BCP38 within your network would greatly
+           reduce such attack surface 
+        */
+        recursion yes;
+        
+ 
+        dnssec-enable yes;
+        dnssec-validation yes;
+
+        managed-keys-directory "/var/named/dynamic";
+
+        pid-file "/run/named/named.pid";
+        session-keyfile "/run/named/session.key";
+
+        /* https://fedoraproject.org/wiki/Changes/CryptoPolicy */
+        include "/etc/crypto-policies/back-ends/bind.config";
+};
+
+logging {
+        channel default_debug {
+                file "data/named.run";
+                severity dynamic;
+        };
+};
+<b>       
+//forward zone
+zone "okd.org" IN {
+     type master;
+     file "okd.org.db";
+     allow-update { none; };
+     allow-query { any; };
+};
+
+//backward zone
+zone "167.168.192.in-addr.arpa" IN {
+     type master;
+     file "okd.org.rev";
+     allow-update { none; };
+     allow-query { any; };
+};
+</b>
+</pre>
+
 
 Starting DNS Service
 ```
