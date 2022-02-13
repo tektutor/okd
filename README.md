@@ -273,7 +273,7 @@ Feb 12 14:56:34 tektutor named[38264]: resolver priming query complete
 </pre>
 
 
-You may now test your DNS instatation as shown below
+You may now test your DNS Forward lookup with nslookup as shown below
 ```
 nslookup tektutor.okd.org
 ```
@@ -330,6 +330,93 @@ Name:	www.okd.org
 Address: 192.168.167.140
 </pre>
 
+You may also try this
+
+```
+<b>nslookup 192.168.167.140</b>
+```
+
+The expected output is
+
+<pre>
+[root@tektutor ~]# nslookup 192.168.167.140
+140.167.168.192.in-addr.arpa	name = tektutor.okd.org.
+</pre>
+
+It is time to test via dig command now
+
+```
+dig tektutor.okd.org
+```
+
+The expected output is
+
+<pre>
+[root@tektutor ~]# <b>dig tektutor.okd.org</b>
+
+; <<>> DiG 9.11.26-RedHat-9.11.26-6.el8 <<>> tektutor.okd.org
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 11495
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 2926609f658612979e209c44620860100b0110331e3f9fc7 (good)
+;; QUESTION SECTION:
+;tektutor.okd.org.		IN	A
+
+;; ANSWER SECTION:
+tektutor.okd.org.	86400	IN	A	192.168.167.140
+
+;; AUTHORITY SECTION:
+okd.org.		86400	IN	NS	tektutor.okd.org.
+
+;; Query time: 1 msec
+;; SERVER: 192.168.167.140#53(192.168.167.140)
+;; WHEN: Sat Feb 12 17:34:08 PST 2022
+;; MSG SIZE  rcvd: 103
+</pre>
+
+Let's now verify the reverse lookup
+
+```
+dig -x 192.168.167.140
+```
+
+The expected output is
+
+<pre>
+[root@tektutor ~]# <b>dig -x 192.168.167.140</b>
+
+; <<>> DiG 9.11.26-RedHat-9.11.26-6.el8 <<>> -x 192.168.167.140
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44215
+;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 2
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+; COOKIE: 12dc1c6f6d8b4ab33d8c76186208605db37487e27acba48d (good)
+;; QUESTION SECTION:
+;140.167.168.192.in-addr.arpa.	IN	PTR
+
+;; ANSWER SECTION:
+140.167.168.192.in-addr.arpa. 86400 IN	PTR	tektutor.okd.org.
+
+;; AUTHORITY SECTION:
+167.168.192.in-addr.arpa. 86400	IN	NS	tektutor.okd.org.
+
+;; ADDITIONAL SECTION:
+tektutor.okd.org.	86400	IN	A	192.168.167.140
+
+;; Query time: 1 msec
+;; SERVER: 192.168.167.140#53(192.168.167.140)
+;; WHEN: Sat Feb 12 17:35:25 PST 2022
+;; MSG SIZE  rcvd: 145
+</pre>
+
+If all the above works fine, your DNS server is all set !.
 
 ### Installing ovirt hypervisor in RHEL 8.5
 Make sure VT-x or AMD-v is enabled on the BIOS if RHEL 8.5 is setup as the base Operating System.
