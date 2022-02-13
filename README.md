@@ -3,7 +3,7 @@ I had setup RHEL 8.5 as Virtual Machine on my Dell Precision 7920 Tower.
 
 Dell Precision 7920 Tower Configuration
 - 128 GB RAM 
-- Dual Socket with Intel Xeon Silver Processor with 12 Cores on each Processor 
+- Dual Socket with Intel Xeon Silver Processor with 12 Physical Cores on each Processor. With HypertThreading 48 vCores.
 - 1 TB SSD HDD.
 
 However for the Virtual Machine I allocated
