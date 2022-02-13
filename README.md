@@ -1834,29 +1834,37 @@ Complete!
 
 #### Install Java packages
 ```
-sudo yum module -y enable javapackages-tools
+sudo dnf module enable -y javapackages-tools
 ```
 The expected output is
 <pre>
-[root@tektutor ~]# yum module -y enable javapackages-tools
+[root@tektutor ~]# <b>dnf module enable -y javapackages-tools</b>
 Updating Subscription Management repositories.
-CentOS-$stream - Ceph Pacific                                                            461 kB/s | 375 kB     00:00    
-determining the fastest mirror (12 hosts).. done.             ===                      ] ---  B/s |   0  B     --:-- ETA
-Latest oVirt 4.4 Release                                                                 216 kB/s | 2.7 MB     00:12    
-Extra Packages for Enterprise Linux 8 - x86_64                                           7.4 MB/s |  11 MB     00:01    
-CentOS-8 - Gluster 8                                                                      53 kB/s |  42 kB     00:00    
-virtio-win builds roughly matching what will be shipped in upcoming RHEL                  43 kB/s | 143 kB     00:03    
-Copr repo for EL8_collection owned by sbonazzo                                            47 kB/s | 246 kB     00:05    
-Copr repo for gluster-ansible owned by sac                                               2.4 kB/s | 7.3 kB     00:02    
-CentOS-8 - Advanced Virtualization                                                       255 kB/s | 207 kB     00:00    
-CentOS-8 - oVirt 4.4                                                                      18 kB/s | 1.2 MB     01:05    
-CentOS-8 - OpsTools - collectd                                                            47 kB/s |  41 kB     00:00    
-CentOS-8 - OpsTools - collectd - vault                                                    34 kB/s | 149 kB     00:04    
-CentOS-8 - NFV OpenvSwitch                                                               143 kB/s | 107 kB     00:00    
-CentOS-8 - OpenStack victoria                                                            3.1 MB/s | 2.7 MB     00:00    
+Last metadata expiration check: 0:17:33 ago on Sat 12 Feb 2022 04:08:55 PM PST.
 Error: Problems in request:
 missing groups or modules: javapackages-tools
-[root@tektutor ~]# 
+[root@tektutor ~]# subscription-manager repos \
+> --enable=rhel-8-for-x86_64-baseos-rpms \
+> --enable=rhel-8-for-x86_64-appstream-rpms \
+> --enable=codeready-builder-for-rhel-8-x86_64-rpms
+Repository 'rhel-8-for-x86_64-baseos-rpms' is enabled for this system.
+Repository 'rhel-8-for-x86_64-appstream-rpms' is enabled for this system.
+Repository 'codeready-builder-for-rhel-8-x86_64-rpms' is enabled for this system.
+[root@tektutor ~]# dnf module enable -y javapackages-tools
+Updating Subscription Management repositories.
+Red Hat CodeReady Linux Builder for RHEL 8 x86_64 (RPMs)                                                    3.4 MB/s | 6.4 MB     00:01    
+Last metadata expiration check: 0:00:01 ago on Sat 12 Feb 2022 04:28:13 PM PST.
+Dependencies resolved.
+============================================================================================================================================
+ Package                          Architecture                    Version                            Repository                        Size
+============================================================================================================================================
+Enabling module streams:
+ javapackages-tools                                               201801                                                                   
+
+Transaction Summary
+============================================================================================================================================
+
+Complete!
 </pre>
 
 ##### Enabled pki dependencies
