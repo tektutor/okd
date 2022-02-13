@@ -95,7 +95,7 @@ Complete!
 </pre>
 
 #### Configuring DNS Server
-In my case my RedHat 8.5 VM IP was 192.168.167.140, you may have to note down your IP address so that you can replace 192.168.167.140 with your IP address for the DNS Server configuration.
+In my case the RedHat 8.5 VM IP was 192.168.167.140, you may have to note down your IP address so that you can replace 192.168.167.140 with your IP address for the DNS Server configuration.
 
 You need to edit /etc/named.conf as highlighted in bold below
 <pre>
