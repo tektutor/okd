@@ -1832,6 +1832,11 @@ Complete!
 [root@tektutor ~]# 
 </pre>
 
+### Install ovirt dependencies
+```
+sudo dnf module enable -y pki-deps postgresql:12 389-ds
+```
+
 #### Install Java packages
 ```
 sudo dnf module enable -y javapackages-tools
