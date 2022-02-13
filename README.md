@@ -4077,3 +4077,17 @@ The expected output is
 [ INFO  ] Stage: Termination
 [ INFO  ] Execution of setup completed successfully
 </pre>
+
+### Accessing OVirt Dashboard
+```
+https://tektutor.okd.org:443/ovirt-engine
+```
+
+Login Credentials
+
+<pre>
+Username - admin
+Password - root
+</pre>
+
+You may have to use your password that you gave at the time of installing OVirt.
