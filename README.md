@@ -418,6 +418,46 @@ tektutor.okd.org.	86400	IN	A	192.168.167.140
 
 If all the above works fine, your DNS server is all set !.
 
+### Troubleshooting DNS lookup
+In case your /etc/resolv.conf dns entry gets replaced with automatic configuration, you may disable Network Manager from do so by creating a file /etc/NetworkManager/conf.d/90-dns-none.conf with the below content
+
+<pre>
+[main]
+dns=none
+</pre>
+
+Restart the Network Manager
+```
+systemctl restart NetworkManager
+systemctl status NetworkManager
+```
+The expected output is
+<pre>
+[root@tektutor ~]# <b>systemctl restart NetworkManager</b>
+[root@tektutor ~]# <b>systemctl status NetworkManager</b>
+● NetworkManager.service - Network Manager
+   Loaded: loaded (/usr/lib/systemd/system/NetworkManager.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2022-02-12 17:43:03 PST; 6s ago
+     Docs: man:NetworkManager(8)
+  Process: 76699 ExecReload=/usr/bin/busctl call org.freedesktop.NetworkManager /org/freedesktop/NetworkManager org.freedesktop.NetworkMana>
+ Main PID: 76841 (NetworkManager)
+    Tasks: 4 (limit: 410178)
+   Memory: 3.3M
+   CGroup: /system.slice/NetworkManager.service
+           └─76841 /usr/sbin/NetworkManager --no-daemon
+
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6415] device (virbr0): Activation: successful, device activated.
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6470] dhcp4 (ens160): state changed unknown -> bound, address=1>
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6492] device (ens160): state change: ip-config -> ip-check (rea>
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6569] device (ens160): state change: ip-check -> secondaries (r>
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6573] device (ens160): state change: secondaries -> activated (>
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6577] manager: NetworkManager state is now CONNECTED_SITE
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6584] device (ens160): Activation: successful, device activated.
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6589] manager: NetworkManager state is now CONNECTED_GLOBAL
+Feb 12 17:43:03 tektutor.okd.org NetworkManager[76841]: <info>  [1644716583.6596] manager: startup complete
+Feb 12 17:43:04 tektutor.okd.org NetworkManager[76841]: <info>  [1644716584.7937] agent-manager: agent[0a5f46fd62f323da,:1.288/org.gnome.Sh
+</pre>
+
 ### Installing ovirt hypervisor in RHEL 8.5
 Make sure VT-x or AMD-v is enabled on the BIOS if RHEL 8.5 is setup as the base Operating System.
 
