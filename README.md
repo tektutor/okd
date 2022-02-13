@@ -13,10 +13,18 @@ For more detailed instructions, you may read this article
 https://access.redhat.com/solutions/253273
 
 ```
-subscription-manager register
-subscription-manager refresh
-subscription-manager attach --auto
-subscription-manager list --available --all
+sudo subscription-manager register
+sudo subscription-manager refresh
+sudo subscription-manager attach --auto
+sudo subscription-manager list --available --all
+
+sudo subscription-manager repos --enable="rhel-8-for-x86_64-baseos-rpms"
+sudo subscription-manager repos --enable="rhel-8-for-x86_64-appstream-rpms"
+sudo subscription-manager repos --enable="ansible-2-for-rhel-8-x86_64-rpms"
+sudo subscription-manager repos \
+--enable=rhel-8-for-x86_64-baseos-rpms \
+--enable=rhel-8-for-x86_64-appstream-rpms \
+--enable=codeready-builder-for-rhel-8-x86_64-rpms
 ```
 When prompted for username and password, type your redhat developer credentials to register your OS with RedHat to let you install/upgrade softwares.
 
@@ -118,7 +126,7 @@ Feb 12 14:56:34 tektutor named[38264]: managed-keys-zone: Key 20326 for zone . a
 Feb 12 14:56:34 tektutor named[38264]: resolver priming query complete
 </pre>
 
-### Installing ovirt hypervisor in RHEL 7.7
+### Installing ovirt hypervisor in RHEL 8.5
 Make sure VT-x or AMD-v is enabled on the BIOS if RHEL 8.5 is setup as the base Operating System.
 
 In case you have setup RHEL 8.5 as a Virtual Machine, make sure nested VM is enabled.  I enabled VT-X and IOMMU on my VMWare Workstation.
@@ -2148,4 +2156,203 @@ Skipped:
   ovirt-engine-4.4.10.6-1.el8.noarch                                                                                     
 
 Complete!
+</pre>
+
+### Configuring Ovirt
+```
+sudo engine-setup
+```
+
+The expected output is
+<pre>
+[root@tektutor ~]# <b>engine-setup</b>
+[ INFO  ] Stage: Initializing
+[ INFO  ] Stage: Environment setup
+          Configuration files: /etc/ovirt-engine-setup.conf.d/10-packaging-jboss.conf, /etc/ovirt-engine-setup.conf.d/10-packaging.conf
+          Log file: /var/log/ovirt-engine/setup/ovirt-engine-setup-20220212163618-gd7egj.log
+          Version: otopi-1.9.6 (otopi-1.9.6-1.el8)
+[ INFO  ] Stage: Environment packages setup
+[ INFO  ] Stage: Programs detection
+[ INFO  ] Stage: Environment setup (late)
+[ INFO  ] Stage: Environment customization
+         
+          --== PRODUCT OPTIONS ==--
+         
+          Configure Cinderlib integration (Currently in tech preview) (Yes, No) [No]: No
+          Configure Engine on this host (Yes, No) [Yes]: Yes
+         
+          Configuring ovirt-provider-ovn also sets the Default cluster's default network provider to ovirt-provider-ovn.
+          Non-Default clusters may be configured with an OVN after installation.
+          Configure ovirt-provider-ovn (Yes, No) [Yes]: Yes
+          Configure WebSocket Proxy on this host (Yes, No) [Yes]: Yes
+         
+          * Please note * : Data Warehouse is required for the engine.
+          If you choose to not configure it on this host, you have to configure
+          it on a remote host, and then configure the engine on this host so
+          that it can access the database of the remote Data Warehouse host.
+          Configure Data Warehouse on this host (Yes, No) [Yes]: Yes
+          Configure VM Console Proxy on this host (Yes, No) [Yes]: Yes
+          Configure Grafana on this host (Yes, No) [Yes]: Yes
+         
+          --== PACKAGES ==--
+         
+[ INFO  ] Checking for product updates...
+[ INFO  ] DNF Package grafana-postgres available, but not installed.
+[ INFO  ] No product updates found
+         
+          --== NETWORK CONFIGURATION ==--
+         
+          Host fully qualified DNS name of this server [tektutor.okd.org]: tektutor.okd.org
+[WARNING] Failed to resolve tektutor.okd.org using DNS, it can be resolved only locally
+         
+          Setup can automatically configure the firewall on this system.
+          Note: automatic configuration of the firewall may overwrite current settings.
+          Do you want Setup to configure the firewall? (Yes, No) [Yes]: Yes
+[ INFO  ] firewalld will be configured as firewall manager.
+         
+          --== DATABASE CONFIGURATION ==--
+         
+          Where is the DWH database located? (Local, Remote) [Local]: Local
+         
+          Setup can configure the local postgresql server automatically for the DWH to run. This may conflict with existing applications.
+          Would you like Setup to automatically configure postgresql and create DWH database, or prefer to perform that manually? (Automatic, Manual) [Automatic]: Automatic
+          Where is the Engine database located? (Local, Remote) [Local]: Local
+         
+          Setup can configure the local postgresql server automatically for the engine to run. This may conflict with existing applications.
+          Would you like Setup to automatically configure postgresql and create Engine database, or prefer to perform that manually? (Automatic, Manual) [Automatic]: Automatic
+         
+          --== OVIRT ENGINE CONFIGURATION ==--
+         
+          Engine admin password: 
+          Confirm engine admin password: 
+[WARNING] Password is weak: The password is shorter than 8 characters
+          Use weak password? (Yes, No) [No]: Yes
+          Application mode (Virt, Gluster, Both) [Both]: Both
+          Use default credentials (admin@internal) for ovirt-provider-ovn (Yes, No) [Yes]: Yes
+         
+          --== STORAGE CONFIGURATION ==--
+         
+          Default SAN wipe after delete (Yes, No) [No]: No
+         
+          --== PKI CONFIGURATION ==--
+         
+          Organization name for certificate [okd.org]: tektutor
+         
+          --== APACHE CONFIGURATION ==--
+         
+          Setup can configure the default page of the web server to present the application home page. This may conflict with existing applications.
+          Do you wish to set the application as the default page of the web server? (Yes, No) [Yes]: Yes
+         
+          Setup can configure apache to use SSL using a certificate issued from the internal CA.
+          Do you wish Setup to configure that, or prefer to perform that manually? (Automatic, Manual) [Automatic]: Automatic
+         
+          --== SYSTEM CONFIGURATION ==--
+         
+         
+          --== MISC CONFIGURATION ==--
+         
+          Please choose Data Warehouse sampling scale:
+          (1) Basic
+          (2) Full
+          (1, 2)[1]: 1
+          Use Engine admin password as initial Grafana admin password (Yes, No) [Yes]: Yes
+         
+          --== END OF CONFIGURATION ==--
+         
+[ INFO  ] Stage: Setup validation
+         
+          --== CONFIGURATION PREVIEW ==--
+         
+          Application mode                        : both
+          Default SAN wipe after delete           : False
+          Host FQDN                               : tektutor.okd.org
+          Firewall manager                        : firewalld
+          Update Firewall                         : True
+          Set up Cinderlib integration            : False
+          Configure local Engine database         : True
+          Set application as default page         : True
+          Configure Apache SSL                    : True
+          Engine database host                    : localhost
+          Engine database port                    : 5432
+          Engine database secured connection      : False
+          Engine database host name validation    : False
+          Engine database name                    : engine
+          Engine database user name               : engine
+          Engine installation                     : True
+          PKI organization                        : tektutor
+          Set up ovirt-provider-ovn               : True
+          Grafana integration                     : True
+          Grafana database user name              : ovirt_engine_history_grafana
+          Configure WebSocket Proxy               : True
+          DWH installation                        : True
+          DWH database host                       : localhost
+          DWH database port                       : 5432
+          DWH database secured connection         : False
+          DWH database host name validation       : False
+          DWH database name                       : ovirt_engine_history
+          Configure local DWH database            : True
+          Configure VMConsole Proxy               : True
+         
+          Please confirm installation settings (OK, Cancel) [OK]: OK
+[ INFO  ] Stage: Transaction setup
+[ INFO  ] Stopping engine service
+[ INFO  ] Stopping ovirt-fence-kdump-listener service
+[ INFO  ] Stopping dwh service
+[ INFO  ] Stopping vmconsole-proxy service
+[ INFO  ] Stopping websocket-proxy service
+[ INFO  ] Stage: Misc configuration (early)
+[ INFO  ] Stage: Package installation
+[ INFO  ] Stage: Misc configuration
+[ INFO  ] Upgrading CA
+[ INFO  ] Initializing PostgreSQL
+[ INFO  ] Creating PostgreSQL 'engine' database
+[ INFO  ] Configuring PostgreSQL
+[ INFO  ] Creating PostgreSQL 'ovirt_engine_history' database
+[ INFO  ] Configuring PostgreSQL
+[ INFO  ] Creating CA: /etc/pki/ovirt-engine/ca.pem
+[ INFO  ] Creating CA: /etc/pki/ovirt-engine/qemu-ca.pem
+[ INFO  ] Updating OVN SSL configuration
+[ INFO  ] Updating OVN timeout configuration
+[ INFO  ] Creating/refreshing DWH database schema
+[ INFO  ] Setting up ovirt-vmconsole proxy helper PKI artifacts
+[ INFO  ] Setting up ovirt-vmconsole SSH PKI artifacts
+[ INFO  ] Configuring WebSocket Proxy
+[ INFO  ] Creating/refreshing Engine database schema
+[ INFO  ] Creating a user for Grafana
+[ INFO  ] Creating/refreshing Engine 'internal' domain database schema
+[ INFO  ] Creating default mac pool range
+[ INFO  ] Adding default OVN provider to database
+[ INFO  ] Adding OVN provider secret to database
+[ INFO  ] Setting a password for internal user admin
+[ INFO  ] Install selinux module /usr/share/ovirt-engine/selinux/ansible-runner-service.cil
+[ INFO  ] Generating post install configuration file '/etc/ovirt-engine-setup.conf.d/20-setup-ovirt-post.conf'
+[ INFO  ] Stage: Transaction commit
+[ INFO  ] Stage: Closing up
+[ INFO  ] Starting engine service
+[ INFO  ] Starting dwh service
+[ INFO  ] Starting Grafana service
+[ INFO  ] Restarting ovirt-vmconsole proxy service
+         
+          --== SUMMARY ==--
+         
+[ INFO  ] Restarting httpd
+          Please use the user 'admin@internal' and password specified in order to login
+          Web access is enabled at:
+              http://tektutor.okd.org:80/ovirt-engine
+              https://tektutor.okd.org:443/ovirt-engine
+          Internal CA B4:FE:1E:3C:2D:50:09:92:F5:BB:49:72:C2:85:B1:78:3A:8A:59:2A
+          SSH fingerprint: SHA256:gRExX4WTsSrsG3as0PNQpANEmFMkcYsUCcYx+PFdFng
+          Web access for grafana is enabled at:
+              https://tektutor.okd.org/ovirt-engine-grafana/
+          Please run the following command on the engine machine tektutor.okd.org, for SSO to work:
+          systemctl restart ovirt-engine
+         
+          --== END OF SUMMARY ==--
+         
+[ INFO  ] Stage: Clean up
+          Log file is located at /var/log/ovirt-engine/setup/ovirt-engine-setup-20220212163618-gd7egj.log
+[ INFO  ] Generating answer file '/var/lib/ovirt-engine/setup/answers/20220212164609-setup.conf'
+[ INFO  ] Stage: Pre-termination
+[ INFO  ] Stage: Termination
+[ INFO  ] Execution of setup completed successfully
 </pre>
