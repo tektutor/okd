@@ -418,7 +418,7 @@ tektutor.okd.org.	86400	IN	A	192.168.167.140
 If all the above works fine, your DNS server is all set !.
 
 ### Troubleshooting DNS lookup
-In case your /etc/resolv.conf dns entry gets replaced with automatic configuration, you may disable Network Manager from do so by creating a file /etc/NetworkManager/conf.d/90-dns-none.conf with the below content
+In case your /etc/resolv.conf dns entry gets replaced with automatic configuration, you may disable Network Manager from doing so by creating a file /etc/NetworkManager/conf.d/90-dns-none.conf with the below content
 
 <pre>
 [main]
